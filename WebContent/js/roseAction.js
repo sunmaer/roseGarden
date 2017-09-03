@@ -18,10 +18,14 @@
 		  spans[i].style.display = "inline-block";
 	  } 
   }
-  
   // 隐藏对比栏
   closeCompareBox.onclick = function() {
     compareBox.style.display = "none";
+    var compareItem = document.getElementsByClassName("compare-item");
+    var len = compareItem.length;
+    for (var i=len-1;i>=0;i--) {
+      compareAll.removeChild(compareItem[i]);
+    }
   }
   // 清空对比栏
   emptyCmopareBox.onclick = function() {
