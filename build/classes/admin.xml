@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+ <constant name="struts.multipart.maxSize" value="12582912"/>
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<package name="struts2" extends="struts-default">
+		<!-- 拦截器 -->
+		<interceptors>
+			<interceptor name="adminAuth" class="action.AdminAuthInterceptor">
+				<param name="excludeMethods">adminLogin,isAid</param>
+			</interceptor>
+			<interceptor-stack name="adminAuthStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="adminAuth"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="adminAuthStack"> </default-interceptor-ref>
+
+		<global-results>
+			<result name="adminlogin" type="redirect">/admin/login.jsp</result>
+		</global-results>
+
+		<!--admin的operation -->
+	
+		<!-- 管理员登录 -->
+		<action name="adminLogin" class="action.AdminLoginAction"
+			method="adminLogin"></action>
+		<!-- 主页信息 -->
+		<action name="findInfo" class="action.FindInfoAction">
+			<result name="success">/admin/index.jsp</result></action>
+		<!-- 退出 -->
+		<action name="adminOut" class="action.AdminOutAction"></action>
+		<!--管理员账号存在 -->
+		<action name="checkLogin" class="action.AdminLoginAction"
+			method="isAid"></action>
+		<!--管理员个人信息 -->
+		<action name="findAdmin" class="action.FindAdminAction">
+			<result name="success">/admin/admin.jsp</result>
+		</action>
+		<!--管理员列表 -->
+		<action name="adminList" class="action.ListAdminAction">
+			<result name="success">/admin/adminList.jsp</result>
+		</action>
+		<!-- 单个管理员撤销 -->
+		<action name="deleteAdmin" class="action.DeleteAdminAction"></action>
+		<!-- 批量撤销管理员 -->
+		<action name="multiDeleteAdmin" class="action.DeleteAdminAction" method="multiDeleteAdmin"></action>
+		<action name="addAdmin" class="action.AddAdminAction"></action>
+		<action name="updateAdmin" class="action.UpdateAdminAction"></action>
+		<action name="adminLoginOut" class="action.AdminOutAction"></action>
+
+		<!-- Rose的operation -->
+		
+		<action name="findRose" class="action.FindRoseAction">
+			<result name="success">/admin/updateRose.jsp</result>
+		</action>
+		<action name="roseList" class="action.ListRoseAction">
+			<result name="success">/admin/roseList.jsp</result>
+		</action>
+		<action name="searchRoseBySpecie" class="action.ListSearchRoseAction">
+			<result name="success">/admin/roseSearchBySpecie.jsp</result>
+			<result name="none">/admin/searchError.jsp</result>
+		</action>
+			 
+		<action name="updateRose" class="action.UpdateRoseAction"></action>
+		<action name="addRose" class="action.AddRoseAction"></action>
+		<action name="isSpecie" class="action.AddRoseAction" method="isSpecie"></action>
+		<action name="fileUpload" class="action.AddPictureAction"></action>
+		<action name="fileDelete" class="action.DeletePictureAction"></action>
+		<action name="deleteRose" class="action.DeleteRoseAction"></action>
+		<action name="multiDeleteRose" class="action.DeleteRoseAction" method ="multiDeleteRose"></action>
+		
+		<action name="importRose" class="action.ImportRoseAction">
+		<result name="success">/admin/roseImport.jsp</result></action>
+		 <action name="roseExport" class="action.ExportRoseAction">    
+           <result name="success" type="stream"> 
+           </result>    
+       </action>   
+
+
+		<!--comment的operation -->
+
+		<action name="commentList" class="action.ListCommentAction">
+			<result name="success">/admin/commentList.jsp</result>
+		</action>
+		<action name="multiDeleteComment" class="action.DeleteCommentAction" method="multiDeleteComment"></action>
+		<action name="deleteComment" class="action.DeleteCommentAction"></action>
+		<action name="showComment" class="action.FindCommentAction">
+			<result>/admin/seeComment.jsp</result>
+		</action>
+
+		<!--theme -->
+
+		<action name="deleteTheme" class="action.DeleteThemeAction"></action>
+		<action name="multiDeleteTheme" class="action.DeleteThemeAction" method="multiDeleteTheme"></action>
+		<action name="themeList" class="action.ListThemeAction">
+			<result name="success">/admin/themeList.jsp</result>
+		</action>
+		<action name="seeTheme" class="action.FindThemeAction">
+			<result>/admin/seeTheme.jsp</result>
+		</action>
+		
+		<!-- discuss的operation -->
+
+		<action name="discussList" class="action.ListDiscussAction">
+			<result name="success">/admin/discussList.jsp</result>
+		</action>
+		<action name="seeDiscuss" class="action.FindDiscussAction">
+			<result>/admin/seeDiscuss.jsp</result>
+		</action>
+		<action name="deleteDiscuss" class="action.DeleteDiscussAction"></action>
+		<action name="multiDeleteDiscuss" class="action.DeleteDiscussAction" method="multiDeleteDiscuss"></action>
+
+		<!--user的operation -->
+
+	
+		<!-- 用户审查 -->
+		<action name="userCheck" class="action.UserCheckAction"></action>
+		<action name="registerUserList" class="action.ListRegisterUserAction">
+			<result name="success">/admin/userCheckList.jsp</result>
+		</action>
+		<action name="refuseUser" class="action.RefuseUserAction"></action>
+		<action name="multiRefuseUser" class="action.RefuseUserAction" method="multiRefuseUser"></action>
+		<action name="passUser" class="action.PassUserAction"></action>
+		<action name="multiPassUser" class="action.PassUserAction" method="multiPassUser"></action>
+		<!-- 用户列表 -->
+		<action name="userList" class="action.ListUserAction">
+			<result name="success">/admin/userList.jsp</result>
+		</action>
+		<action name="addUser" class="action.AddUserAction"></action>
+		<action name="checkUserID" class="action.AddUserAction" method="checkUserID"></action>
+		<!-- deleteUser -->
+		<action name="deleteUser" class="action.DeleteUserAction"></action>
+		<action name="multiDeleteUser" class="action.DeleteUserAction" method="multiDeleteUser"></action>
+		<!-- promoteUser -->
+		<action name="promoteUser" class="action.PromoteUserAction"></action>
+		<action name="isAdminID" class="action.PromoteUserAction"
+			method="isAdmin"></action>
+
+	</package>
+
+</struts>    
+

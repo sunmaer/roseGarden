@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+			PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="po" >
+	<class name="po.Admin" table="admin"><!-- 每个class对应一个持久化对象 -->
+		<id name="aid"><!-- id元素用来定义主键标识,并指定主键生成策略 -->
+			<generator class="assigned"></generator>
+		</id>
+		<property name="name"></property><!-- 映射name属性 -->
+		<property name="password"></property><!-- 映射password属性 -->
+		<property name="role" update = "false" ></property><!-- 映射role属性 -->
+		<property name="telephone"></property><!-- 映射telephone属性 -->
+	</class>
+</hibernate-mapping>

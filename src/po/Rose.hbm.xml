@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+			PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="po" >
+	<class name="po.Rose" table="rose"><!-- 每个class对应一个持久化对象 -->
+		<id name="rid"><!-- id元素用来定义主键标识,并指定主键生成策略 -->
+			<generator class="identity"></generator>
+		</id>
+	<property name="specie"></property><!-- 映射属性 -->
+	<property name="classification"></property><!-- 映射属性 -->
+	<property name="nowrose"></property><!-- 映射属性 -->
+	<property name="cultivate"></property><!-- 映射属性 -->
+	<property name="introduction"></property><!-- 映射属性 -->
+	<property name="type"></property><!-- 映射属性 -->
+	<property name="growthpotential"></property><!-- 映射属性 -->
+	<property name="height"></property><!-- 映射属性 -->
+	<property name="stemroughness"></property><!-- 映射属性 -->
+	<property name="sectionlong"></property><!-- 映射属性 -->
+	<property name="isbranchestraight"></property><!-- 映射属性 -->
+	<property name="branchangle"></property><!-- 映射属性 -->
+	<property name="twigscolor"></property><!-- 映射属性 -->
+	<property name="hasthorn"></property><!-- 映射属性 -->
+	<property name="thornshape"></property><!-- 映射属性 -->
+	<property name="thorndensity"></property><!-- 映射属性 -->
+	<property name="longthornnumber"></property><!-- 映射属性 -->
+	<property name="shortthornnumber"></property><!-- 映射属性 -->
+	<property name="lobularnumber"></property><!-- 映射属性 -->
+	<property name="lobularshape"></property><!-- 映射属性 -->
+	<property name="leafarea"></property><!-- 映射属性 -->
+	<property name="topleafletslong"></property><!-- 映射属性 -->
+	<property name="topleafletswide"></property><!-- 映射属性 -->
+	<property name="topleaflets"></property><!-- 映射属性 -->	
+	<property name="leaftexture"></property><!-- 映射属性 -->
+	<property name="leaveluster"></property><!-- 映射属性 -->
+	<property name="newleafcolor"></property><!-- 映射属性 -->
+	<property name="oldleafcolor"></property><!-- 映射属性 -->
+	<property name="serrat"></property><!-- 映射属性 -->
+	<property name="flowertime"></property><!-- 映射属性 -->
+	<property name="flowerstart"></property><!-- 映射属性 -->
+	<property name="flowerbloom"></property><!-- 映射属性 -->
+	<property name="flowerend"></property><!-- 映射属性 -->
+	<property name="singleflowerperiod"></property><!-- 映射属性 -->
+	<property name="floweramount"></property><!-- 映射属性 -->
+	<property name="inflorescence"></property><!-- 映射属性 -->
+	<property name="flowercolor"></property><!-- 映射属性 -->
+	<property name="singlecolor"></property><!-- 映射属性 -->
+	<property name="multiplycolor"></property><!-- 映射属性 -->
+	<property name="floral"></property><!-- 映射属性 -->
+	<property name="flowerdiameter"></property><!-- 映射属性 -->
+	<property name="singledoublepetal"></property><!-- 映射属性 -->
+	<property name="flowerpattern"></property><!-- 映射属性 -->
+	<property name="flowereye"></property><!-- 映射属性 -->
+	<property name="flowerroll"></property><!-- 映射属性 -->
+	<property name="petalshape"></property><!-- 映射属性 -->
+	<property name="petalvelvet"></property><!-- 映射属性 -->
+	<property name="petalshardness"></property><!-- 映射属性 -->
+	<property name="firmness"></property><!-- 映射属性 -->
+	<property name="pollenamount"></property><!-- 映射属性 -->
+	<property name="pollenvitality"></property><!-- 映射属性 -->
+	<property name="fieldperformance"></property><!-- 映射属性 -->
+	<property name="heatresistance"></property><!-- 映射属性 -->
+	<property name="coldresistance"></property><!-- 映射属性 -->
+	<property name="powderymildew"></property><!-- 映射属性 -->
+	<property name="blackspot"></property><!-- 映射属性 -->
+	<property name="remark"></property><!-- 映射属性 -->
+	<property name="firstletter"></property><!-- 映射属性 -->
+	<property name="everyfirstletter"></property><!-- 映射属性 -->
+	</class>
+</hibernate-mapping>

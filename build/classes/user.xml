@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<package name="struts" extends="struts-default">
+
+		<!--user的operation -->
+	<global-results>
+			<result name="index" type="redirect">/home/index.jsp</result>
+		</global-results>
+		<!-- 用户登录 -->
+		<action name="userLogin" class="action.UserLoginAction"></action>
+		<!--检查用户账号存在 -->
+		<action name="isUid" class="action.UserLoginAction"
+			method="isUid"></action>
+		<!-- 用户个人信息 -->
+		<action name="userInfo" class="action.FindUserAction">
+			<result name="success">/home/userInfo.jsp</result></action>
+			<!--更改用户个人信息  -->
+		<action name="updateUser" class="action.UpdateUserAction"></action>
+		<!-- 退出 -->
+		<action name="userOut" class="action.UserOutAction"></action>
+		<!--用户注册  -->	
+		<action name="registerUser" class="action.RegisterUserAction"></action>	
+		<action name="showName" class="action.UserLoginAction" method="showName"></action>
+		<!--增加收藏  -->
+		<action name="addFavorite" class="action.AddFavoriteAction"></action>
+		<!--展示收藏  -->
+		<action name="myFavorite" class="action.ListFavoriteAction">
+			<result>/home/favorite.jsp</result></action>
+		<!--  取消收藏-->
+		<action name="deleteFavorite" class="action.DeleteFavoriteAction"></action>
+		<!-- comment -->
+		<!--增加月季评论  -->
+		<action name="addComment" class="action.AddCommentAction"></action>
+	
+		<!-- theme -->
+		<!--发帖子  -->
+		<action name="addTheme" class="action.AddThemeAction"></action>
+		<!-- 帖子列表-->
+		<action name="showTheme" class="action.ListThemeAction">
+			<result>/home/theme.jsp</result></action>
+		<!-- discuss -->
+		<!--参与帖子讨论  -->
+		<action name="addDiscuss" class="action.AddDiscussAction"></action>
+		<!-- 帖子的讨论 -->
+		<action name="showDiscuss" class="action.ListDiscussAction">
+			<result name="success">/home/discuss.jsp</result>
+		</action>
+		<!-- rose-->
+		<!-- 具体展示月季信息以及评论 -->
+		<action name="showRose" class="action.ShowRoseBySpecieAction">
+			<result name="success">/home/rose.jsp</result>
+		</action>
+		<!-- 中文搜索 -->
+		<action name="chineseIndex" class="action.ChineseSearchAction"></action>
+		<!-- specie的模糊搜索 -->
+		<action name="normalSearch" class="action.NormalSearchAction">
+			<result name="success">/home/roseSpecieSearch.jsp</result>
+		</action>
+		<!-- specie的首字母搜索 -->
+		<action name="searchLetter" class="action.NormalSearchAction" method="searchByEveryFirstLetter" >
+			<result name="success">/home/roseSpecieSearch.jsp</result>
+		</action>
+		<!--根据条件搜索  -->
+		<action name="superSearch" class="action.SuperSearchAction"></action>
+		<!-- 对比展示 -->
+		<action name="compareRose" class="action.CompareRoseAction">
+			<result>/home/compare.jsp</result>
+		</action>
+		<action name="getFavorite" class="action.NormalSearchAction" method="getFavorite"></action>
+		
+</package>
+</struts>    

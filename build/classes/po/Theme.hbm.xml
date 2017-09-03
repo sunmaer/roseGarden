@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping 
+			PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+	<class name="po.Theme" table="theme"><!-- 每个class对应一个持久化对象 -->
+		<id name="tid" ><!-- id元素用来定义主键标识,并指定主键生成策略 -->
+			<generator class="identity"></generator>
+		</id>
+		<property name="uid"></property><!-- 映射属性 -->
+		<property name="time"></property><!-- 映射属性 -->
+		<property name="content"></property><!-- 映射属性 -->
+		<property name="theme"></property><!-- 映射属性 -->
+		<property name="name"></property><!-- 映射属性 -->
+	</class>	
+</hibernate-mapping>
