@@ -9,7 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>蔷薇花园</title>  
+    <title>蔷薇花园</title> 
+    <meta name="keywords" content="月季, 植物, 蔷薇花园, 华中农业大学园艺园林学院"> 
+	<meta name="description" content="蔷薇花园，赠人玫瑰，手有余香。">
 	<link rel="shortcut icon" href="<%=path%>/images/rose.ico" mce_href="<%=path%>/images/rose.ico" type="image/x-icon">
     <!-- css reset -->
     <link href="css/reset-rose.css" rel="stylesheet">
