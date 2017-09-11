@@ -101,7 +101,7 @@
 	<script src="js/jquery.validate.min.js"></script>
     <script src="js/index.js"></script>
     <!-- 防止 XSS 攻击 -->
-    <script src="https://raw.github.com/leizongmin/js-xss/master/dist/xss.js"></script>
+    <script src="js/xss.min.js"></script>
 	<script type="text/javascript">
 
         /*自执行的匿名函数，防止全局变量污染*/
@@ -115,7 +115,12 @@
         		} else {
         			var xhr = new XMLHttpRequest();
             		xhr.open("post","addTheme",true);
-	        		var data="theme="+filterXSS(theme.value)+"&content="+filterXSS(content.value);
+	        		var data="theme="+theme.value+"&content="+content.value;
+	        		var data = filterXSS(data, {
+        			  whiteList:          [],        // 白名单为空，表示过滤所有标签
+        			  stripIgnoreTag:     true,      // 过滤所有非白名单标签的HTML
+        			  stripIgnoreTagBody: ['script'] // script标签较特殊，需要过滤标签中间的内容
+        			});
 	        		alert(data);
 	        		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	        		xhr.send(data);
