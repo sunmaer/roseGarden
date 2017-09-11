@@ -19,10 +19,19 @@ var lazyLoad = function() {
 	
 	// 函数节流
 	function throttle(fn, delay) {
+		let canRun = true;
 		
+		if(!canRun) {
+			return;
+		}
+		canRun = false;
+		setTimeout(function() {
+			fn();
+			canRun = true;
+		}, delay)
 	}
 	
 	window.onscroll = function() {
-		loadImg()
+		throttle(loadImg, 300);
 	}
 }
