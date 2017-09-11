@@ -82,6 +82,8 @@
 	<script src="js/jquery-3.0.0.min.js"></script>
 	<script src="js/jquery.validate.min.js"></script>
     <script src="js/index.js"></script>
+    <!-- 防止 XSS 攻击 -->
+    <script src="js/xss.min.js"></script>
 	<script type="text/javascript">
 
         /*自执行的匿名函数，防止全局变量污染*/
@@ -92,6 +94,11 @@
         		var tid = document.getElementById("tid");
         		var content = document.getElementById("content");
         		var data="tid="+tid.innerHTML+"&content="+content.value;
+        		var data = filterXSS(data, {
+    			  whiteList:          [],        // 白名单为空，表示过滤所有标签
+    			  stripIgnoreTag:     true,      // 过滤所有非白名单标签的HTML
+    			  stripIgnoreTagBody: ['script'] // script标签较特殊，需要过滤标签中间的内容
+    			});
         		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         		xhr.send(data);
         		xhr.onreadystatechange = function() {
