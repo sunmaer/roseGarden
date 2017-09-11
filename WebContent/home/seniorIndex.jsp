@@ -402,79 +402,12 @@
 	<script src="js/jquery.validate.min.js"></script>
     <script src="js/index.js"></script>
     <script src="js/roseAction.js"></script>
+    <!-- 图片懒加载 -->
+    <script src="js/lazyLoad.js"></script>
 	<script type="text/javascript">
 
         /*自执行的匿名函数，防止全局变量污染*/
         (function() {
-
-        	//分类
-        	/* var classification = document.getElementById("classification");
-        	var nowrose = document.getElementById("nowrose");
-        	if(classification.value == "现代月季") {
-        		nowrose.disabled = false;
-        	} else {
-        		nowrose.disabled = true;
-        	}
-        	classification.onchange = function() {
-        		if(classification.value == "现代月季") {
-        			nowrose.disabled = false;
-        		} else {
-        			nowrose.disabled = true;
-        		}
-        	}
-
-        	//有无刺
-        	var hasthorn = document.getElementById("hasthorn");
-        	var thornshape = document.getElementById("thornshape");
-        	var thorndensity = document.getElementById("thorndensity");
-        	var longthornnumber = document.getElementById("longthornnumber");
-        	var shortthornnumber = document.getElementById("shortthornnumber");
-        	if(hasthorn.value == "有") {
-        		thornshape.disabled = false;
-        		thorndensity.disabled = false;
-        		longthornnumber.disabled = false;
-        		shortthornnumber.disabled = false;
-        	} else {
-        		thornshape.disabled = true;
-        		thorndensity.disabled = true;
-        		longthornnumber.disabled = true;
-        		shortthornnumber.disabled = true;
-        	}
-        	hasthorn.onchange = function() {
-        		if(hasthorn.value == "有") {
-        			thornshape.disabled = false;
-        			thorndensity.disabled = false;
-        			longthornnumber.disabled = false;
-        			shortthornnumber.disabled = false;
-        		} else {
-        			thornshape.disabled = true;
-        			thorndensity.disabled = true;
-        			longthornnumber.disabled = true;
-        			shortthornnumber.disabled = true;
-        		}
-        	}
-
-        	//花色二级菜单
-        	var flowercolor = document.getElementById("flowercolor");
-        	var singleColor = document.getElementById("singleColor");
-        	var multiplyColor = document.getElementById("multiplyColor");
-        	subColor();
-        	flowercolor.onchange = function() {
-        		subColor();
-        	}
-        	function subColor() {
-        		if(flowercolor.value == "单色") {
-        			singleColor.disabled = false;
-        			multiplyColor.disabled = true;
-        		} else if(flowercolor.value == "复色") {
-        			singleColor.disabled = true;
-        			multiplyColor.disabled = false;
-        		} else {
-        			singleColor.disabled = true;
-        			multiplyColor.disabled = true;
-        		}
-        	}  */
-          
         	var form = document.getElementById("rose-form");
             //筛选
 		     document.getElementById("senior-search").onclick = function() {
@@ -505,7 +438,7 @@
 									var src = roseArray[i].split("-")[1];
 									var div = document.createElement('div');
 									div.className = "showRose-item";
-									div.innerHTML = "<a href='showRose?specie="+specie+"'><img src='"+src+"' alt=''></a>"+
+									div.innerHTML = "<a href='showRose?specie="+specie+"'><img data-src='"+src+"' alt=''></a>"+
 						              "<div class='rose-info'>"+
 						                "<p class='rose-specie'><a href='showRose?specie="+specie+"'>"+specie+"</a></p>"+
 						                "<span class='add-favorite'>加入收藏</span>"+
@@ -513,6 +446,8 @@
 						              "</div>";
 						            showRose.appendChild(div);
 								}
+								
+								lazyLoad(); //    图片懒加载
 								
 								var XHR = new XMLHttpRequest();
 								XHR.open("get","getFavorite",true);
