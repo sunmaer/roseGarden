@@ -100,6 +100,8 @@
 	<script src="js/jquery-3.0.0.min.js"></script>
 	<script src="js/jquery.validate.min.js"></script>
     <script src="js/index.js"></script>
+    <!-- 防止 XSS 攻击 -->
+    <script src="https://raw.github.com/leizongmin/js-xss/master/dist/xss.js"></script>
 	<script type="text/javascript">
 
         /*自执行的匿名函数，防止全局变量污染*/
@@ -113,7 +115,8 @@
         		} else {
         			var xhr = new XMLHttpRequest();
             		xhr.open("post","addTheme",true);
-	        		var data="theme="+theme.value+"&content="+content.value;
+	        		var data="theme="+filterXSS(theme.value)+"&content="+filterXSS(content.value);
+	        		alert(data);
 	        		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	        		xhr.send(data);
 	        		xhr.onreadystatechange = function() {
