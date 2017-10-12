@@ -7,11 +7,13 @@ var lazyLoad = function() {
 	// 加载图片
 	function loadImg() {
 		let imgs = document.querySelectorAll('img[data-src]');
+		if(!imgs.length) return;
 		let scrollTop = document.body.clientHeight + document.body.scrollTop || document.documentElement.scrollTop;
 		[].slice.call(imgs, 0).forEach(function(img, index) {
 			if(img.offsetTop < scrollTop) {
 				if(!img.src) {
 					img.src = img.dataset.src;
+					img.removeAttribute('data-src');
 				}
 			}
 		})
@@ -30,7 +32,7 @@ var lazyLoad = function() {
 			canRun = true;
 		}, delay)
 	}
-	
+	throttle(loadImg, 300);
 	window.onscroll = function() {
 		throttle(loadImg, 300);
 	}

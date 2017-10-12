@@ -144,9 +144,9 @@ public class RoseDAOImpl implements RoseDAO {
 		Session session = HibernateSessionFactory.getSession();
 		String str = null;
 		if (type == "" || type == null) {
-			str = "select count(1) from Rose";
+			str = "select count(*) from Rose";
 		} else {
-			str = "select count(1) from Rose where classification = '" + type
+			str = "select count(*) from Rose where classification = '" + type
 					+ "'";
 		}
 		Query query = session.createQuery(str);
